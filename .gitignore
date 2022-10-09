@@ -1,0 +1,16 @@
+.idea/
+.env
+.DS_Store
+__pycache__
+
+dbt_packages/
+logs/
+target/
+
+*.terraform.lock.hcl
+*terraform.tfstate
+*terraform.tfstate.backup
+*.terraform/
+
+
+

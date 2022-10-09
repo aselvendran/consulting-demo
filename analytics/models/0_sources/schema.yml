@@ -1,0 +1,198 @@
+version: 2
+
+models:
+  - name: account
+    description: Client data -- most likely a store.
+    columns:
+      - name: id
+        description: unique id representing each account.
+        tests:
+          - not_null
+      - name: account_source
+        description: Type of Store.
+      - name: billing_address_id
+        description: address id of the account.
+      - name: description
+        description: Description
+      - name: industry
+        description: Domain of the account
+      - name: updated_date
+        description: Last timestamp in which the data point changed.
+      - name: created_date
+        description: Timestamp in which the account record was created.
+      - name: name
+        description: Name of account.
+      - name: phone
+        description: Phone Number of account.
+
+  - name: address
+    description: Address data
+    columns:
+      - name: id
+        description: unique id representing each address.
+        tests:
+          - not_null
+      - name: address
+        description: Full address.
+      - name: address_type
+        description: Type of address
+      - name: city
+        description: City
+      - name: country
+        description: Country
+      - name: description
+        description: Description
+      - name: geocode_accuracy
+        description: How accurate the lat/long values are.
+      - name: latitude
+        description: Latitude
+      - name: longitude
+        description: Longitude
+      - name: postal_code
+        description: Zip Code
+      - name: state
+        description: State
+      - name: street
+        description: Street address
+      - name: time_zone
+        description: Time Zone of the given address.
+
+  - name: contact
+    description: Contact data
+    columns:
+      - name: id
+        description: unique id representing each contact.
+        tests:
+          - not_null
+      - name: birth_date
+        description: Birthday of contact.
+      - name: description
+        description: Description.
+      - name: do_not_call
+        description: Flag on whether calling is an option.
+      - name: email
+        description: Email Address
+      - name: first_name
+        description: First Name
+      - name: has_opted_out_of_email
+        description: Flag on whether contact opted from email.
+      - name: home_phone
+        description: Home Phone Number
+      - name: is_email_bounced
+        description: Whether email bounce
+      - name: last_name
+        description: Last Name
+      - name: created_date
+        description: Date of when contact was created.
+      - name: updated_date
+        description: Date of when the contact data was altered.
+      - name: address_id
+        description: Address associated to contact.
+      - name: middle_name
+        description: Middle Name
+      - name: mobile_phone
+        description: Mobile Phone Number.
+      - name: name
+        description: Full Name
+      - name: phone
+        description: Phone Number
+
+  - name: orders
+    description: Order Info
+    columns:
+      - name: id
+        description: Transaction Id
+        tests:
+          - not_null
+      - name: account_id
+        description: account_id
+      - name: billing_address_id
+        description: billing_address_id
+      - name: bill_to_contact_id
+        description: bill_to_contact_id
+      - name: description
+        description: description
+      - name: close_date
+        description: close_date
+      - name: name
+        description: name
+      - name: ordered_date
+        description: ordered_date
+      - name: order_number
+        description: order_number
+      - name: order_item_ids
+        description: List of Order Item Ids
+      - name: related_order_id
+        description: Used to attribute a monthly subscriber.
+      - name: shipping_address_id
+        description: shipping_address_id
+      - name: status
+        description: status
+      - name: total_amount
+        description: total_amount
+      - name: total_tax_amount
+        description: total_tax_amount
+      - name: type
+        description: type
+
+  - name: orderitem
+    description: Order Item Data
+    columns:
+      - name: id
+        description: unique id representing each order item.
+        tests:
+          - not_null
+      - name: product2_id
+        description: Associated Product2_id.
+      - name: quantity
+        description: The count of products associated to this order item.
+      - name: description
+        description: Description.
+
+  - name: product
+    description: Product Data
+    columns:
+      - name: id
+        description: unique id representing each product.
+        tests:
+          - not_null
+      - name: description
+        description: Description
+      - name: product_class
+        description: Where the product is available.
+      - name: is_active
+        description: Flag on whether the Product is available to purchase.
+      - name: is_deleted
+        description: Flag on whether the Product has been discontinued.
+      - name: created_date
+        description: Date of when contact was created.
+      - name: updated_date
+        description: Date of when the contact data was altered.
+      - name: name
+        description: Name of product
+      - name: product_category_id
+        description: Associated Product Category Id.
+      - name: cost
+        description: Cost of the Product.
+      - name: stock_keeping_unit
+        description: The count of units in inventory of the given product.
+
+  - name: productcategory
+    description: Product Category Data
+    columns:
+      - name: id
+        description: unique id representing each product category.
+        tests:
+          - not_null
+      - name: currency_iso_code
+        description: USD
+      - name: description
+        description: Description
+      - name: created_date
+        description: Date of when contact was created.
+      - name: updated_date
+        description: Date of when the contact data was altered.
+      - name: name
+        description: Name of the Product Category.
+      - name: number_of_products
+        description: The count of products associated to the product category.

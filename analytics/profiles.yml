@@ -1,0 +1,16 @@
+config:
+  partial_parse: true
+
+demo:
+  outputs:
+    consulting-demo:
+      type: postgres
+      threads: 8
+      host: "{{ env_var('POSTGRES_HOST') }}"
+      port: 5432
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: public
+
+  target: consulting-demo

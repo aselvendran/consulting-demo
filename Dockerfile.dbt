@@ -1,0 +1,26 @@
+FROM ghcr.io/dbt-labs/dbt-postgres:1.1.0
+
+
+RUN python -m pip install --upgrade pip
+RUN pip install pipenv
+
+COPY Pipfile Pipfile.lock ./
+RUN pipenv install --dev --system --deploy
+
+WORKDIR /home/demo
+
+COPY analytics /home/demo/analytics
+COPY data_gathering /home/demo/data_gathering
+
+COPY analytics/profiles.yml /root/.dbt/profiles.yml
+
+
+
+RUN cd /home/demo/analytics && dbt deps
+
+WORKDIR /home/demo
+
+ENV PYTHONPATH "${PYTHONPATH}:/home/demo"
+ENV PYTHONUNBUFFERED 1
+
+ENTRYPOINT ["bash"]

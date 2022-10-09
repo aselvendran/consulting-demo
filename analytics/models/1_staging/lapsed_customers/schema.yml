@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg__contact_opportunity_ranked
+    description: contact opportunity ranked
+    columns:
+      - name: id
+        description: unique id representing each contact.
+        tests:
+          - not_null
+      - name: birth_date
+        description: Birthday of contact.
+      - name: description
+        description: Description.
+      - name: do_not_call
+        description: Flag on whether calling is an option.
+      - name: email
+        description: Email Address
+      - name: first_name
+        description: First Name
+      - name: has_opted_out_of_email
+        description: Flag on whether contact opted from email.
+      - name: home_phone
+        description: Home Phone Number
+      - name: is_email_bounced
+        description: Whether email bounce
+      - name: last_name
+        description: Last Name
+      - name: created_date
+        description: Date of when contact was created.
+      - name: updated_date
+        description: Date of when the contact data was altered.
+      - name: address_id
+        description: Address associated to contact.
+      - name: middle_name
+        description: Middle Name
+      - name: mobile_phone
+        description: Mobile Phone Number.
+      - name: name
+        description: Full Name
+      - name: phone
+        description: Phone Number
+      - name: total_amount
+        description: total_amount
+      - name: initial_account_id
+        description: initial_account_id
+      - name: count_accounts
+        description: count_accounts
+      - name: ranking_of_purchase
+        description: ranking_of_purchase
+      - name: average_purchase
+        description: average_purchase
+      - name: average_purchase_by_account
+        description: average_purchase_by_account
+      - name: is_gift_greater_than_average
+        description: is_gift_greater_than_average

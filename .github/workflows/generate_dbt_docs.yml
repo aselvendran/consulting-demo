@@ -1,0 +1,48 @@
+name: Deploy DBT Docs
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  dbt-docs-generator:
+    runs-on: ubuntu-latest
+    container: ghcr.io/dbt-labs/dbt-postgres:1.1.0
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: demo
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Run dbt deps
+        run: cd analytics && dbt deps
+
+      - name: Compile dbt docs
+        run: cd analytics && dbt docs generate --profiles-dir .
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: demo
+
+      - name: Install rsync
+        run: apt-get update && apt-get install -y rsync
+
+      - name: Deploy dbt docs to repo
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: analytics/target
+

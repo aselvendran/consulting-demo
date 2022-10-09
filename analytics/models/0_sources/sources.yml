@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name : public
+    tables:
+      - name: account
+      - name: address
+      - name: contact
+      - name: order
+      - name: orderitem
+      - name: product2
+      - name: productcategory
