@@ -47,7 +47,7 @@ I hope with this project, I can provide a holistic overview of the services that
 - [x] Create analytic models on different KPI metrics based on mocked CRM data.
     - [x] DBT models within different dimensions.
     - [x] DBT tests capturing data quality.    
-    - [x] DBT docs for democratizing data and deployed via Github Actions.
+    - [x] DBT docs for democratizing data and deployed via Github Actions. The docs can be found here: [consulting-demo dbt docs](https://aselvendran.github.io/consulting-demo/#!/overview?g_v=1).
 - [x] Tableau Dashboard visualizing the KPIs created with the DBT analytic models.
 - [x] Dockerized environment to be able to run this demo in any local setup.
 - [x] Terraform with localstack environment so that deploying this from a local computing service can be seamless.
